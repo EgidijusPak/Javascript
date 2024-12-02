@@ -54,33 +54,50 @@ trecias.style.color = "brown";
 
 // Function declaration for createTable
 function createTable() {
-  let eil = document.getElementById("eil");
-  eil.addEventListener("click", (event) => {
+  let table = document.getElementById("table");
+  let row = document.getElementById("row");
+  let col = document.getElementById("col");
+  let button = document.getElementById("submit");
+  button.addEventListener("click", (event) => {
     event.preventDefault();
-    eil.values;
-  });
+    let row_val = row.value;
+    let col_val = col.value;
 
-  console.log(eil);
-  let stu = document.getElementById("stu");
+    let form = document.querySelector("form");
+    form.reset();
+    table.innerHTML = "";
 
-  for (let i = 0; i < parseInt(eil); i++) {
-    let x = document.getElementById("myTable").insertRow(i);
-
-    for (let j = 0; j < parseInt(stu); j++) {
-      let y = x.insertCell(j);
-      y.innerHTML = "Row-" + i + " Column-" + j;
+    for (let i = 0; i < parseInt(row_val); i++) {
+      let x = table.insertRow(i);
+      for (let j = 0; j < parseInt(col_val); j++) {
+        let y = x.insertCell(j);
+        y.textContent = "c " + parseInt(j + 1) + "|";
+      }
     }
-  }
+  });
 }
 
-let row = document.getElementById("row");
 let button = document.getElementById("submit");
 
-console.log(button, row);
+button.onclick = createTable();
+table.style.border = "solid";
 
-button.addEventListener("click", (event) => {
-  event.preventDefault();
-  console.log(row.value);
-});
+let heart = document.getElementsByClassName("heart");
 
-// start.onclick = createTable();
+let clicked = new Array(heart.length).fill(false);
+console.log(clicked);
+
+for (let i = 0; i < heart.length; i++) {
+  heart[i].addEventListener("click", (event) => {
+    event.preventDefault();
+    if (clicked[i] == false) {
+      heart[i].style.color = "red";
+      clicked[i] = true;
+      localStorage.setItem(`picture ${i + 1}`, `${i + 1}`);
+    } else {
+      heart[i].style.color = "black";
+      clicked[i] = false;
+      localStorage.removeItem(`picture ${i + 1}`);
+    }
+  });
+}
