@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <h1>Canilla JavaScript LocalStorage CRUD project</h1>
+
+  <form id="productForm">
+    <label for="productId">Product Code</label>
+    <br />
+    <input type="number" id="productId" placeholder="only numbers..." required /><br />
+    <label for="productName">Product Name</label>
+    <br /><input type="text" id="productName" required /><br />
+    <label for="productQuantity">Product quantity</label>
+    <br />
+    <input type="number" id="productQuantity" min="1" required /><br />
+    <button type="button" id="insertButton">Insert New</button>
+    <button type="button" id="editButton">Edit Item</button>
+    <button type="button" id="deleteButton">Delete Item</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Product Code1</th>
+        <th>Product name1</th>
+        <th>Product Quantity1</th>
+      </tr>
+    </thead>
+    <tbody id="productTableBody"></tbody>
+  </table>
+
+  <form id="searchForm" class="right">
+    <h2>Find Product by Code</h2>
+    <label> Product Code </label>
+    <br />
+    <input type="text" id="searchProductId" placeholder="only numbers..." required />
+    <br />
+    <button type="button" id="searchButton">Select from LS</button>
+  </form>
+
+  <table class="right">
+    <thead>
+      <tr>
+        <th>Product Code</th>
+        <th>Product name</th>
+        <th>Product Quantity</th>
+      </tr>
+    </thead>
+    <tbody id="searchResultsBody"></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
